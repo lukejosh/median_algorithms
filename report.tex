@@ -1,9 +1,8 @@
 \documentclass{article}
-\usepackage{amsmath}
+\usepackage[fleqn]{amsmath}
 \usepackage{amssymb}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\usepackage{algorithmicx}
 \usepackage{enumitem}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -20,8 +19,79 @@
 \tableofcontents
 
 \section{Summary}
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In et mauris felis. Etiam viverra molestie euismod. Nullam finibus nisl et mollis molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec viverra lacinia ligula tristique convallis. Sed eget erat leo. Phasellus convallis blandit rhoncus. Donec tellus sapien, fringilla auctor purus sit amet, blandit mollis eros. Nulla arcu turpis, malesuada a odio mollis, sollicitudin varius elit. Vestibulum euismod dictum fermentum. Morbi consectetur bibendum quam, ac dictum velit hendrerit posuere. Etiam vel massa sit amet dui porta vehicula id ac diam.
 
 \section{Description of the Algorithms}
+    Duis scelerisque risus at urna efficitur, id laoreet dolor eleifend. Aenean sed nulla quis quam iaculis congue. Vivamus posuere dui in ornare posuere. Integer accumsan, diam ut pharetra vulputate, sapien neque consectetur nisl, in gravida neque lacus nec quam. Nullam sit amet pulvinar quam, sed tristique ante. Nunc eleifend orci non orci fringilla viverra quis eget libero. Pellentesque in metus non augue sodales tempor. Vivamus maximus malesuada ligula vel interdum. Nulla pretium lectus vel nisl faucibus, vitae pretium ante venenatis.
+    \subsection{Brute Force}
+        \subsubsection{The Algorithm}
+            \begin{algorithm}
+                \caption{Brute Force Median}
+                \begin{algorithmic}
+                    \Function{BruteForceMedian}{$A[0..n - 1]$}
+                        \State{$k \leftarrow \|n / 2\|$}
+                        \For{$i \leftarrow 1$ \bf{to} $n - 1$}
+                            \State{$numsmaller \leftarrow 0$}
+                            \State{$numeqal \leftarrow 0$}
+                            \For{$j \leftarrow 0$ \bf{to} $n - 1$}
+                                \If{$A[j] < A[i]$}
+                                    \State{$numsmaller \leftarrow numsmaller + 1$}
+                                \Else
+                                    \If{$A[j] = A[i]$}
+                                        \State{$numequal \leftarrow numequal + 1$}
+                                    \EndIf
+                                \EndIf                            
+                                \If{$numsmaller < k$ \bf{and} $k \leq (numsmaller + numequal)$}
+                                    \State{\bf{return} $A[i]$}
+                                \EndIf
+                            \EndFor
+                        \EndFor
+                    \EndFunction
+                \end{algorithmic}
+            \end{algorithm}
+
+    \subsection{Johnsonbaugh and Schaefer’s Algorithm}
+        \subsubsection{The Algorithm}
+            \begin{algorithm}
+                \caption{Johnsonbaugh and Schaefer’s Algorithm}
+                \begin{algorithmic}
+                    \Function{Median}{$A[0..n - 1$}
+                        \If{$n = 1$}
+                            \State{\bf{return} $A[0]$}
+                        \Else
+                            \State{Select($A, 0, |n/2|, n - 1$)}
+                        \EndIf
+                    \EndFunction\\
+
+                    \Function{Select}{$A[0..n - 1], l, m, h$}
+                        \State{$pos \leftarrow$ Partition($A, l, h$)}
+                        \If{$pos = m$}
+                            \State{\bf{return} $A[pos]$}
+                        \EndIf
+                        \If{$pos > m$}
+                            \State{\bf{return} Select($A, l, m, pos - 1$)}
+                        \EndIf
+                        \If{$pos < m$}
+                            \State{\bf{return} Select($A, pos + 1, m, h$)}
+                        \EndIf
+                    \EndFunction\\
+
+                    \Function{Partition}{$A[0..n - 1], l, h$}
+                        \State{$pivotval \leftarrow A[l]$}
+                        \State{$pivotloc \leftarrow l$}
+
+                        \For{$j \leftarrow l + 1$ \bf{to} $h$}
+                            \If{$A[j] < pivotval$}
+                                \State{$pivotloc \leftarrow pivotloc + 1$}
+                                \State{swap($A[pivotloc], A[j]$)}
+                            \EndIf
+                            \State{swap($A[l], A[pivotloc]$)}
+                        \EndFor
+                    \State{\bf{return} $pivotloc$}
+                    \EndFunction
+                \end{algorithmic}
+            \end{algorithm}
+
 
 \section{Theoretical Analysis of the Algorithms}
     \subsection{Choice of Basic Operations}
