@@ -9,6 +9,9 @@
 \usepackage{apacite}
 \usepackage{svg}
 \usepackage{placeins}
+\usepackage{float}
+\usepackage[margin=1in]{geometry}
+\usepackage{lipsum}
 
 \title{CAB302 - Assignment 2}
 \author{Luke Josh, Jason Queen}
@@ -24,10 +27,11 @@
 \section{Description of the Algorithms}
     Duis scelerisque risus at urna efficitur, id laoreet dolor eleifend. Aenean sed nulla quis quam iaculis congue. Vivamus posuere dui in ornare posuere. Integer accumsan, diam ut pharetra vulputate, sapien neque consectetur nisl, in gravida neque lacus nec quam. Nullam sit amet pulvinar quam, sed tristique ante. Nunc eleifend orci non orci fringilla viverra quis eget libero. Pellentesque in metus non augue sodales tempor. Vivamus maximus malesuada ligula vel interdum. Nulla pretium lectus vel nisl faucibus, vitae pretium ante venenatis.
     \subsection{Brute Force}
+        Words
         \subsubsection{The Algorithm}
-            \begin{algorithm}
+            \begin{algorithm}[H]
                 \caption{Brute Force Median}
-                \begin{algorithmic}
+                \begin{algorithmic}[1]
                     \Function{BruteForceMedian}{$A[0..n - 1]$}
                         \State{$k \leftarrow \|n / 2\|$}
                         \For{$i \leftarrow 1$ \bf{to} $n - 1$}
@@ -40,21 +44,22 @@
                                     \If{$A[j] = A[i]$}
                                         \State{$numequal \leftarrow numequal + 1$}
                                     \EndIf
-                                \EndIf                            
-                                \If{$numsmaller < k$ \bf{and} $k \leq (numsmaller + numequal)$}
-                                    \State{\bf{return} $A[i]$}
                                 \EndIf
                             \EndFor
+                            \If{$numsmaller < k$ \bf{and} $k \leq (numsmaller + numequal)$}
+                                \State{\bf{return} $A[i]$}
+                            \EndIf
                         \EndFor
                     \EndFunction
                 \end{algorithmic}
             \end{algorithm}
 
     \subsection{Johnsonbaugh and Schaefer’s Algorithm}
+        Words
         \subsubsection{The Algorithm}
-            \begin{algorithm}
-                \caption{Johnsonbaugh and Schaefer’s Algorithm}
-                \begin{algorithmic}
+            \begin{algorithm}[H]
+                \caption{Selecion Median}
+                \begin{algorithmic}[1]
                     \Function{Median}{$A[0..n - 1$}
                         \If{$n = 1$}
                             \State{\bf{return} $A[0]$}
@@ -94,9 +99,21 @@
 
 
 \section{Theoretical Analysis of the Algorithms}
-    \subsection{Choice of Basic Operations}
-    \subsection{Choice of Problem Size}
-    \subsection{Average Case Efficiency}
+    \subsection{Brute Force Median}
+        \subsubsection{Choice of Basic Operations}
+            The operation that best defines the complexity and running time of the brute force median algorithm is the comparison $A[j] < A[i]$. This comparison operation is performed more than any other operation in the algorithm - a minimum of $n - 1$ times, and a maximum of $(n - 1)^2$ times.
+        \subsubsection{Choice of Problem Size}
+            Words
+        \subsubsection{Average Case Efficiency}
+            Words
+
+    \subsection{Selection Median}
+        \subsubsection{Choice of Basic Operations}
+            Words
+        \subsubsection{Choice of Problem Size}
+            Words
+        \subsubsection{Average Case Efficiency}
+            Words
 
 \section{Methodology, Tools and Techniques}
     \subsection{Programming Environment}
