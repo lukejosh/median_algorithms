@@ -5,7 +5,7 @@ int bruteForceMedian(int *a, int num_elements, float *time_taken, int *num_opera
 
     clock_t start = clock();
 
-    k = round(num_elements/2.0);
+    k = ceil(num_elements/2.0);
 
     for(int i = 0; i < num_elements; i++){
         num_smaller = 0;
