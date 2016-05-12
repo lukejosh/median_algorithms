@@ -27,7 +27,7 @@
 \section{Description of the Algorithms}
     Duis scelerisque risus at urna efficitur, id laoreet dolor eleifend. Aenean sed nulla quis quam iaculis congue. Vivamus posuere dui in ornare posuere. Integer accumsan, diam ut pharetra vulputate, sapien neque consectetur nisl, in gravida neque lacus nec quam. Nullam sit amet pulvinar quam, sed tristique ante. Nunc eleifend orci non orci fringilla viverra quis eget libero. Pellentesque in metus non augue sodales tempor. Vivamus maximus malesuada ligula vel interdum. Nulla pretium lectus vel nisl faucibus, vitae pretium ante venenatis.
     \subsection{Brute Force}
-        Words
+        The brute force median algorithm works by manually checking each value of the array, and seeing if it's position in a sorted array is in the median position of $|k / 2|$
         \subsubsection{The Algorithm}
             \begin{algorithm}[H]
                 \caption{Brute Force Median}
@@ -105,8 +105,21 @@
         \subsubsection{Choice of Problem Size}
             Words
         \subsubsection{Average Case Efficiency}
-            Words
+            The average case efficiency of the algorithm can be derived by considering then number of operations required to determine the median of an arbitrarily sized array. Consider an array $A = [a_1, a_2, ..., a_n]$ with it's median value placed at position $k$. The algorithm must check each element in the array up to and including $A[k]$ against each element in the array, including itself. Thus, the algorithm must perform $k * n$ comparisons to determine that $A[k]$ is the median value of the array.
 
+            To determine the average number of operations for an array of size $n$, we must consider the pairity of the size of the array, as the algorithm chooses the value to the left of the midpoint when there are an even number of elements. We will first assume that each value in the array has an equivalent chance of being the median. In this case, the average case number of operations to determine the median is average number of operations for each $M = A[k]$ $\forall k \in [0, 1, ..., n]$:
+
+            \begin{align}
+                & c_{average} = \frac{\sum_{j = 1}^{n} j * n}{n} \\
+                & c_{average} = \sum_{j = 1}^n j\\
+                & c_{average} = \frac{n^2 + n}{2}
+            \end{align}
+
+            To account for the issue of pairty, consider two sorted arrays, $A = [a_1, a_2, ..., a_n]$ and $B = [a_1, a_2, ..., a_{n+1}$, where $n$ is odd. In each of these arrays, the median value will be the same, $M = a_{floor(\frac{n}{2})}$, and will have to check the same number of elements to find it, however, in $B$, each element is checked against $n + 1$ other elements, as opposed to A's $n$ other elements. We can use this to restate the above value for the average number of comparisons as $c_{odd average} = \frac{n^2 + n}{2}$, and conversely, $c_{even average} = \frac{n^2}{2}$. These two statements can be combined to give the true average number of comparisons for an arbitrarily sized array as:
+            \begin{align}
+                c_{average} = \frac{n^2 + (n\mod 2) * n}{2}
+            \end{align}
+            Which gives the algorithm an average case complexity of $\Theta(n^2)$.
     \subsection{Selection Median}
         \subsubsection{Choice of Basic Operations}
             Words
