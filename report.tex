@@ -125,7 +125,8 @@
         \subsubsection{Choice of Basic Operations}
             The operation that best defines the complexity and running time of the brute force median algorithm is the comparison $A[j] < A[i]$. This comparison operation is performed more than any other operation in the algorithm - a minimum of $n - 1$ times, and a maximum of $(n - 1)^2$ times.
         \subsubsection{Choice of Problem Size}
-            Words
+            The algorithm was tested on randomly generated arrays of sizes 1 through 1000 - and were averaged a number of TODO unexpected background computations on the system do not adversely create an outlier in the collected data.
+
         \subsubsection{Average Case Efficiency}
             The average case efficiency of the algorithm can be derived by considering then number of operations required to determine the median of an arbitrarily sized array. Consider an array $A = [a_1, a_2, ..., a_n]$ with it's median value placed at position $k$. The algorithm must check each element in the array up to and including $A[k]$ against each element in the array, including itself. Thus, the algorithm must perform $k \cdot n$ comparisons to determine that $A[k]$ is the median value of the array.
 
@@ -152,14 +153,29 @@
 
 \section{Methodology, Tools and Techniques}
     \subsection{Programming Environment}
+        Something something compile command something something ram something something GHz something something ubuntu 14.04 something something.
     \subsection{Implementation of the Algorithms}
+        The algorithms and their tests were both implemented in C++ version TODO
     \subsection{Generating Test Data and Running the Experiments}
 
 \section{Experimental Results}
     \subsection{Functional Testing}
-    \subsection{Average-Case Number of Basic Operations for an Item in the Set}
-    \subsection{Average-Case Number of Basic Operations for an Item not in the Set}
-    \subsection{Average-Case Execution Time for an Item in the Set}
-    \subsection{Average-Case Execution Time for an Item not in the Set}
+        Yada yada unit tests
+    \subsection{Brute Force}
+        \subsubsection{Number of operations}
+            Some operations
+        \subsubsection{Computation time}
+            Some time
+    \subsection{Selection}
+        \subsubsection{Number of operations}
+            Some operations
+        \subsubsection{Computation time}
+            Some time
+
+
+    \subsection{Comparison}
+        As the two algorithms perform the same operation, they are able to be quantitatively compared. In section 3, we have theoretically shown that the average computational complexity of the brute force and selection algorithms are $\Theta{n^2}$ and $\Theta{n}$ respectively. In section 5, we have shown that these theoretical models fit the data that was collected quite well TODO r^2?? - which allows us to confidently compare the two algorithms. It is clear that the selection algorithm is superiour to the brute force method for an arbitrarily sized array - shown computationality and analytically.
+
+
 
 \end{document}
