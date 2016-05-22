@@ -21,9 +21,10 @@ int bruteForceMedian(int *a, int num_elements, float *time_taken, int *num_opera
                     };
                 };
         };
+
         if (num_smaller < k && k <= (num_smaller + num_equal)){
             *num_operations = *num_operations + operations_counter;
-            *time_taken = *time_taken + (float)(clock() - start);
+            *time_taken = (float)*time_taken + ((float)clock() - (float)start);
 
             return a[i];
         };

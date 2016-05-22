@@ -8,7 +8,8 @@ brute_num_operations = result_array(:,3)';
 select_time_taken = result_array(:,4)';
 select_num_operations = result_array(:,5)';
 
-brute_num_operations_expected = (3/8)*(input_size.^2);
+% brute_num_operations_expected = (3/8)*(input_size.^2);
+brute_num_operations_expected = (1*((input_size.^2) + (mod(input_size,2).*input_size)))/2;
 select_num_operations_expected = 6*(input_size.^1);
 
 line_style_1 = '.b-';
@@ -60,7 +61,7 @@ subplot(2,3,5);
 hold on;
 set(hLine1,'marker','.','linestyle','-','color','b');
 set(hLine2,'marker','.','linestyle','-','color','r');
-title('Brute Force Algorithm - Time Taken');
+title('Selection Algorithm - Time Taken');
 xlabel('Input Size (n)');
 ylabel(hAx(1),'Number of Basic Operations (C(n))') % left y-axis
 ylabel(hAx(2),'Time taken (mS)') % right y-axis

@@ -12,7 +12,7 @@ int selectionMedian(int *a, int num_elements, float *time_taken, int *num_operat
     }
 
     *num_operations = *num_operations + operations_counter;
-    *time_taken = *time_taken + (float)(clock() - start);
+    *time_taken = *time_taken + ((float)clock() - (float)start);
 
     return answer;
 }

@@ -32,3 +32,36 @@
 1462852346 source:c:\users\jason\dropbox\bach. engineering\year 3\cab301\assigments\assignment2\cab301_assignment2\tests.cpp
 	"tests.h"
 
+1463378083 source:c:\gitprojects\cab301\cab301-assignment2\cab301_assignment2\main.cpp
+	<iostream>
+	<fstream>
+	<ctime>
+	<cstdio>
+	<stdlib.h>
+	"bruteForceMedian.h"
+	"selectionMedian.h"
+	"tests.h"
+
+1463371109 c:\gitprojects\cab301\cab301-assignment2\cab301_assignment2\bruteforcemedian.h
+	<ctime>
+	<math.h>
+
+1463371109 c:\gitprojects\cab301\cab301-assignment2\cab301_assignment2\selectionmedian.h
+	<ctime>
+	<math.h>
+
+1463371109 c:\gitprojects\cab301\cab301-assignment2\cab301_assignment2\tests.h
+	<iostream>
+	<stdlib.h>
+	"bruteForceMedian.h"
+	"selectionMedian.h"
+
+1463377272 source:c:\gitprojects\cab301\cab301-assignment2\cab301_assignment2\bruteforcemedian.cpp
+	"bruteForceMedian.h"
+
+1463377766 source:c:\gitprojects\cab301\cab301-assignment2\cab301_assignment2\selectionmedian.cpp
+	"selectionMedian.h"
+
+1463371109 source:c:\gitprojects\cab301\cab301-assignment2\cab301_assignment2\tests.cpp
+	"tests.h"
+

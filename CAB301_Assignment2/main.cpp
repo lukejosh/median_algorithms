@@ -9,8 +9,8 @@
 
 #define MIN_INPUT_SIZE 0
 #define MAX_INPUT_SIZE 1000
-#define STEP_INPUT_SIZE 10
-#define NUM_AVERAGES 1000
+#define STEP_INPUT_SIZE 3
+#define NUM_AVERAGES 2000
 
 #define MS_PER_SEC 1000
 
@@ -42,8 +42,8 @@ int main()
     int *brute_operations = new int[num_datapoints];
     int *select_operations = new int[num_datapoints];
 
-    for (int j = 0; j < NUM_AVERAGES; j++){
-        for (int i=0; i < num_datapoints; i++) { // for each test
+
+    for (int i=0; i < num_datapoints; i++) { // for each test
             input_size[i] = MIN_INPUT_SIZE+(i*STEP_INPUT_SIZE);
 
             cout << "Input Size = " << input_size[i] << endl;
@@ -53,29 +53,30 @@ int main()
             brute_operations[i] = 0;
             select_operations[i] = 0;
 
-
+        for (int j = 0; j < NUM_AVERAGES; j++){
             int *a = createRandomArray(input_size[i]);
 
             bruteForceMedian(a, input_size[i], &brute_time[i], &brute_operations[i] );
             selectionMedian(a, input_size[i], &select_time[i], &select_operations[i] );
 
             delete[] a;
-
-            brute_time[i] = (brute_time[i]*(float)MS_PER_SEC)/((float)NUM_AVERAGES*(float)CLOCKS_PER_SEC);
-            select_time[i] = (select_time[i]*(float)MS_PER_SEC)/((float)NUM_AVERAGES*(float)CLOCKS_PER_SEC);
-
-            brute_operations[i] = (int)brute_operations[i]/NUM_AVERAGES;
-            select_operations[i] = (int)select_operations[i]/NUM_AVERAGES;
-
-            cout << "   Brute Force Algorithm" << endl;
-            cout << "       Time Taken(ms) = " << brute_time[i] << endl;
-            cout << "       Num Operations = " << brute_operations[i] << endl;
-
-            cout << "   Selection Algorithm" << endl;
-            cout << "       Time Taken(ms) = " << select_time[i] << endl;
-            cout << "       Num Operations = " << select_operations[i] << endl << endl;
-
         };
+
+        brute_time[i] = (brute_time[i]*(float)MS_PER_SEC)/((float)NUM_AVERAGES*(float)CLOCKS_PER_SEC);
+        select_time[i] = (select_time[i]*(float)MS_PER_SEC)/((float)NUM_AVERAGES*(float)CLOCKS_PER_SEC);
+
+        brute_operations[i] = (int)brute_operations[i]/NUM_AVERAGES;
+        select_operations[i] = (int)select_operations[i]/NUM_AVERAGES;
+
+        cout << "   Brute Force Algorithm" << endl;
+        cout << "       Time Taken(ms) = " << brute_time[i] << endl;
+        cout << "       Num Operations = " << brute_operations[i] << endl;
+
+        cout << "   Selection Algorithm" << endl;
+        cout << "       Time Taken(ms) = " << select_time[i] << endl;
+        cout << "       Num Operations = " << select_operations[i] << endl << endl;
+
+
     };
 
     writeResultsToFile(num_datapoints, input_size, brute_time, brute_operations, select_time, select_operations);

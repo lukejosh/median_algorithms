@@ -32,7 +32,13 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="bruteForceMedian.cpp" />
+		<Unit filename="bruteForceMedian.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="selectionMedian.cpp" />
+		<Unit filename="selectionMedian.h" />
+		<Unit filename="tests.cpp" />
+		<Unit filename="tests.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
