@@ -22,13 +22,13 @@
 \tableofcontents
 
 \section{Summary}
-    The purpose of this report is to analyse algorithms yada yada average complexity yada yada c++ yada yada execution time yada yada.
+    The purpose of this report is to analyse and compare the average complexity of the selection median algorithm against a brute force solution. This report uses algorithm analysis techniques to experimentally determine the average case efficiency of both the selection median and brute force median algorithm. The expected theoretical efficiencies of the algorithms are evaluated using mathematical analysis and are contrasted against the computed experimental results. The results for each algorithm are also compared to each other and the most efficient algorithm is determined.
 
 \section{Description of the Algorithms}
     \subsection{Brute Force}
-        The brute force median algorithm works by manually checking each value of the array, and seeing if it's position in a sorted array is in the median position of $|k / 2|$. It does this by checking each element of the array against every other element of the array, and counting the number of elements that are less than the value, and the number of elements that are greater than the value.
+        The brute force median algorithm works by manually checking each value of the array, and determining  if the elements’ position in a sorted array is in the median position of jk=2j. It does this by checking each element of the array against every other element of the array, and counting the number of elements that are less than the value, and the number of elements that are greater than the value.
 
-        Recalling that the median value of a list of numbers is the one that were to occur in centre value (rounded up for this purpose), we can test if a value is the median value by seeing if it has half the arrays values smaller than it. This can be seen in the psuedocode included in the next section
+        Recalling that the median value of a list of numbers is the element that occurs in center position (rounded up for the purpose of this algorithm), the algorithm tests if a value is the median value by testing if half the elements in the array are less than the value. This can be seen in the pseudocode included in the next section
 
         \subsubsection{The Algorithm}
             \begin{algorithm}[H]
@@ -57,11 +57,12 @@
             \end{algorithm}
 
     \subsection{Median Selection Algorithm}
-        The selection algorithm for finding the median value of the array borrows much of it's logic from the Quicksort algorithm. The algoritm works by partitioning the array into subarrays, searching for the median value stage by stage, sorting as it goes. 
-
-        First, the index of the median value is determined - being half the length of the array, here being rounded up. If the array is of length one, this is treated as a special case, and the value is simply returned, otherwise, it begins to partition.\\
-
-        It begins by finding the index of the first element in the array (hereby reffered to as the primary element), if the array were to be sorted. It loops through each value other than the primary value (hereby reffered to as the secondary element), and checks to see whether the secondary value is less than the primary value. If a secondary value is less than a primary value, the secondary value is swapped with the element in front of the primary element (or the next unswapped value after the primary value, if multiple values are found). At the conclusion of the loop, the primary value is swapped with the value in the position that the last secondary element that was swapped. It should be noted that there is no gaurentee that the array will be sorted by this process - it is just ensuring that all values to the left of the first element are lesser, and all values to the right are greater. An example of this process is as follows, on an array $A = [3 5 4 2 1]$:\\
+        The selection algorithm for finding the median value of the array derives much of it's logic from the Quicksort algorithm. The selection algorithm uses a recursive method to determine the median of the array. 
+        The recursive function first performs a partition on the array where all elements less than a pivot element are swapped until the pivot element swapped into its correct position. All elements with an index lower than that of the pivot, now also have a value which is less than that of the pivot. If the new position of the pivot is the middle of the array then the value of the pivot is returned as it is the median of the array. This check is the base case of the recursive function.
+        Otherwise, if the position of the pivot is less than or greater than that of the middle index then the recursive function is called again and then performs the partition on either the lower or upper partition of the array respectively. This is performed until the base case is met and the element in the middle of the array is returned.
+        It should be noted that there is no guarantee that the whole array will be completely sorted by this process. However, all elements at a lower index than that of the median will have a value that is lower than that of the median element and all elements with an index greater than that of the median element will have values that are also greater than the value of the median.
+        Furthermore, in contract to the brute force algorithm, when this algorithm is performed on an even array size, returns the value which is towards the lower section of the sorted array.
+        An example of this process is as follows, on an array $A = [3 5 4 2 1]$:\\
 
         \noindent$A = [3 5 4 2 1]$ 5 and 4 are both greater than 3, do nothing\\\\
         $A = [3 2 4 5 1]$ $2 < 3$, swap 5 with 2\\\\
@@ -121,11 +122,15 @@
 
 
 \section{Theoretical Analysis of the Algorithms}
+    \subsection{Choice of Problem Size}
+        The algorithms are tested using randomly generated arrays of sizes 1 through to 999 in steps of 3. Additionally, the test for each array size is repeated 2000 times in order to normalize the results.
+
+        The upper limit was chosen as array sizes greater than 1000 have brute force time complexities which are significantly large. This limits the number of averages that can be taken for each array size as the total time to run all tests increases to a value that is impractical to perform repeatedly. 
+
+        The odd step size of 3 is chosen so that tests are performed for both odd and even array sizes. 
     \subsection{Brute Force Median}
         \subsubsection{Choice of Basic Operations}
             The operation that best defines the complexity and running time of the brute force median algorithm is the comparison $A[j] < A[i]$. This comparison operation is performed more than any other operation in the algorithm - a minimum of $n - 1$ times, and a maximum of $(n - 1)^2$ times.
-        \subsubsection{Choice of Problem Size}
-            The algorithm was tested on randomly generated arrays of sizes 1 through 1000 - and were averaged a number of TODO unexpected background computations on the system do not adversely create an outlier in the collected data.
 
         \subsubsection{Average Case Efficiency}
             The average case efficiency of the algorithm can be derived by considering then number of operations required to determine the median of an arbitrarily sized array. Consider an array $A = [a_1, a_2, ..., a_n]$ with it's median value placed at position $k$. The algorithm must check each element in the array up to and including $A[k]$ against each element in the array, including itself. Thus, the algorithm must perform $k \cdot n$ comparisons to determine that $A[k]$ is the median value of the array.
@@ -145,9 +150,7 @@
             Which gives the algorithm an average case complexity of $\Theta(n^2)$.
     \subsection{Selection Median}
         \subsubsection{Choice of Basic Operations}
-            Words
-        \subsubsection{Choice of Problem Size}
-            Words
+            The operation that best defines the complexity and running time of the selection median algorithm is the comparison $A[j] < pivot_val$ which is performed by the partition sort logic borrowed from the Quicksort algorithm. This comparison operation is performed more than any other operation in the algorithm - a minimum of $n - 1$ times, and a maximum of $(n - 1)^2$ times.
         \subsubsection{Average Case Efficiency}
             Words
 
@@ -174,7 +177,7 @@
 
 
     \subsection{Comparison}
-        As the two algorithms perform the same operation, they are able to be quantitatively compared. In section 3, we have theoretically shown that the average computational complexity of the brute force and selection algorithms are $\Theta{n^2}$ and $\Theta{n}$ respectively. In section 5, we have shown that these theoretical models fit the data that was collected quite well TODO r^2?? - which allows us to confidently compare the two algorithms. It is clear that the selection algorithm is superiour to the brute force method for an arbitrarily sized array - shown computationality and analytically.
+        As the two algorithms perform the same operation, they are able to be quantitatively compared. In section 3, we have theoretically shown that the average computational complexity of the brute force and selection algorithms are $\Theta{n^2}$ and $\Theta{n}$ respectively. In section 5, we have shown that these theoretical models fit the data that was collected quite well TODO r\^2?? - which allows us to confidently compare the two algorithms. It is clear that the selection algorithm is superiour to the brute force method for an arbitrarily sized array - shown computationality and analytically.
 
 
 
