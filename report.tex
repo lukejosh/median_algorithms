@@ -128,7 +128,7 @@ backgroundcolor=\color{lbcolor},
 
         \end{enumerate}
 
-        This process continues until the value with an index equal to the median index is found
+        This process continues until the value with an index equal to the median index is found.
 
         \subsubsection{The Algorithm}
             \begin{algorithm}[H]
@@ -206,33 +206,40 @@ backgroundcolor=\color{lbcolor},
         \subsubsection{Choice of Basic Operations}
             The operation that best defines the complexity and running time of the selection median algorithm is the comparison $A[j] < pivot_val$ which is performed by the partition sort logic borrowed from the Quicksort algorithm. This comparison operation is performed more than any other operation in the algorithm - a minimum of $n - 1$ times, and a maximum of $(n - 1)^2$ times.
         \subsubsection{Average Case Efficiency}
-            Words
+            Some dickhead online quotes fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you.
 
 \section{Methodology, Tools and Techniques}
     \subsection{Programming Environment}
-        All testing and computation was done on a Microsoft Surface running Windows 64 bit 8.1, Intel Core i5 Processor (1.9GHz), 4GB DDR4 RAM.
+        All testing and computation was executed on a Microsoft Surface running Windows 8.1 64 bit, Intel Core i5 Processor (1.9GHz), 4GB DDR4 RAM.
         \subsection{Implementation of the Algorithms}
-        The algorithms and their tests were both implemented in C++, compiled using the GCC GNU Compiler in the Code Blocks IDE.
-    \subsection{Generating Test Data and Running the Experiments}
+        The algorithms and their tests were both implemented in C++, compiled using the GCC GNU Compiler in the Code Blocks IDE. The source code for these algorithms is included in Appendix 1.
 
+        In general, operation counts were performed by running the algorithm a large number of times on randomly generated arrays, appending the number of operations for each iteration to a pointer to a integer running total, and then calculating the average. The computation time for algorithms was generated in much the same way - using clock types to find the time between two points in the code (namely, the start and end of the algorithm), and then repeating it and taking the average.
+    \subsection{Generating Test Data and Running the Experiments}
+        I think I've already covered this, read again when you're not tired
+ 
 \section{Experimental Results}
     All graphs referenced in this section have been included in section 2 of the appendix.
     \subsection{Functional Testing}
-        To ensure the functional correctness of the implemented algorithms - a number of unit tests have been implemented. These tests are included the the test.cpp file, which is also included in appendix 2. These unit tests ensure that the algorithms produce the expected results for a number of predefined test cases.
+        To ensure the functional correctness of the implemented algorithms - a number of unit tests have been implemented. These tests are included the the test.cpp file, which is also included in appendix 1 (section 6.1.1). These unit tests ensure that the algorithms produce the expected results for a number of predefined test cases.
     \subsection{Brute Force}
         \subsubsection{Number of operations}
-            Recall that the number of operations 
+            The number of operations of the brute force median algorithm was calculated by running the algorithm on a random array of various sizes, and counting the number of times the comparison $A[j] < A[i]$ is performed. This expected number of comparisons was calculated above to be $\frac{n^2}{2}$ for odd sized arrays, and $\frac{n^2 + n}{2}$ for even sized arrays. This function has been graphed along the data that was collected from the tests - and clearly shows that the expected trend holds true.
+
+            It must be noted that the data sets used to test the number of operations is not tested for uniqueness - a single value may appear more than once. This causes some amount of discrepency between the expected result and the actual result, but can mostly be corrected by increasing the maximum value a value can take. This can be seen in the source code in section 6.1.4, on line 97.
         \subsubsection{Computation time}
-            Some time
+            The computation for the brute force algorithm was expected to run in $\Theta{n^2}$ time. In other words, the time for the algorithm to run is determined quadratically by the number of elements in the array. It can be seen in the included figure that the collected data follows a quadratic trend. Included on this graph also is the operation count again, which allows us to see that the average case running time is indeed correllated to the number of basic operations performed.
     \subsection{Selection}
         \subsubsection{Number of operations}
-            Some operations
+            The selection algorithm was calculated to perform [a number of operations that it doesn't actually perform], which clearly [cannot be seen because it's fucked].
         \subsubsection{Computation time}
             Some time
 
 
     \subsection{Comparison}
-        As the two algorithms perform the same operation, they are able to be quantitatively compared. In section 3, we have theoretically shown that the average computational complexity of the brute force and selection algorithms are $\Theta{n^2}$ and $\Theta{n}$ respectively. In section 5, we have shown that these theoretical models fit the data that was collected quite well TODO r\^2?? - which allows us to confidently compare the two algorithms. It is clear that the selection algorithm is superiour to the brute force method for an arbitrarily sized array - shown computationality and analytically.
+        As the two algorithms perform the same operation, they are able to be quantitatively compared. In section 3, we have theoretically shown that the average computational complexity of the brute force and selection algorithms are $\Theta{n^2}$ and $\Theta{n}$ respectively. In section 5, we have shown that these theoretical models fit the data that was collected quite well - which allows us to confidently compare the two algorithms.
+
+        It is clear that the selection algorithm is superiour to the brute force method for an arbitrarily sized array - shown computationality and [lol] analytically.
 
 \section{Appendix}
     \subsection{Source Code}
@@ -244,6 +251,9 @@ backgroundcolor=\color{lbcolor},
 
         \subsubsection{Selection Median}
             \lstinputlisting{CAB301_Assignment2/selectionMedian.cpp}
+
+        \subsubsection{Main}
+            \lstinputlisting{CAB301_Assignment2/main.cpp}
 
     \subsection{Figures}
         \subsubsection{Brute Force}
