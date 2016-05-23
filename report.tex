@@ -196,6 +196,10 @@ backgroundcolor=\color{lbcolor},
                 c_{average} = \frac{n^2 + (n\mod 2) \cdot n}{2}
             \end{align}
             Which gives the algorithm an average case complexity of $\Theta(n^2)$.
+
+            \subparagraph{A Note on Median Values}
+                The above caluculations are assuming the median value for the array only occurs once. In other cases, an array may take the form $[1, 2, 3, 3, 3, 4, 5]$, which will skew the results for the average number of comparisons. For example, an array $A = [1, 2, 4, 5, 3, 3, 3]$, the median
+
     \subsection{Selection Median}
         \subsubsection{Choice of Basic Operations}
             The operation that best defines the complexity and running time of the selection median algorithm is the comparison $A[j] < pivot_val$ which is performed by the partition sort logic borrowed from the Quicksort algorithm. This comparison operation is performed more than any other operation in the algorithm - a minimum of $n - 1$ times, and a maximum of $(n - 1)^2$ times.
@@ -210,11 +214,12 @@ backgroundcolor=\color{lbcolor},
     \subsection{Generating Test Data and Running the Experiments}
 
 \section{Experimental Results}
+    All graphs referenced in this section have been included in section 2 of the appendix.
     \subsection{Functional Testing}
         To ensure the functional correctness of the implemented algorithms - a number of unit tests have been implemented. These tests are included the the test.cpp file, which is also included in appendix 2. These unit tests ensure that the algorithms produce the expected results for a number of predefined test cases.
     \subsection{Brute Force}
         \subsubsection{Number of operations}
-            Some operations
+            Recall that the number of operations 
         \subsubsection{Computation time}
             Some time
     \subsection{Selection}
@@ -238,6 +243,6 @@ backgroundcolor=\color{lbcolor},
         \subsubsection{Selection Median}
             \lstinputlisting{CAB301_Assignment2/selectionMedian.cpp}
 
-
+    \subsection{2 - Figures}
 
 \end{document}
