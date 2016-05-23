@@ -13,6 +13,9 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{lipsum}
 \usepackage{textcomp}
+\usepackage{graphicx}
+
+\graphicspath{{./Images/}}
 
 \definecolor{listinggray}{gray}{0.9}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
@@ -197,8 +200,7 @@ backgroundcolor=\color{lbcolor},
             \end{align}
             Which gives the algorithm an average case complexity of $\Theta(n^2)$.
 
-            \subparagraph{A Note on Median Values}
-                The above caluculations are assuming the median value for the array only occurs once. In other cases, an array may take the form $[1, 2, 3, 3, 3, 4, 5]$, which will skew the results for the average number of comparisons. For example, an array $A = [1, 2, 4, 5, 3, 3, 3]$, the median
+            The above caluculations are assuming the median value for the array only occurs once. In other cases, an array may take the form $[1, 2, 3, 3, 3, 4, 5]$, which will skew the results for the average number of comparisons. For example, an array $A = [1, 2, 4, 5, 3, 3, 3]$, the median value is 3, but 3 appears more than once. This means the algorithm will find the median at the 5th position, but it must check each value against 7 other values.
 
     \subsection{Selection Median}
         \subsubsection{Choice of Basic Operations}
@@ -208,9 +210,9 @@ backgroundcolor=\color{lbcolor},
 
 \section{Methodology, Tools and Techniques}
     \subsection{Programming Environment}
-        Something something compile command something something ram something something GHz something something ubuntu 14.04 something something.
-    \subsection{Implementation of the Algorithms}
-        The algorithms and their tests were both implemented in C++ version TODO
+        All testing and computation was done on a Microsoft Surface running Windows 64 bit 8.1, Intel Core i5 Processor (1.9GHz), 4GB DDR4 RAM.
+        \subsection{Implementation of the Algorithms}
+        The algorithms and their tests were both implemented in C++, compiled using the GCC GNU Compiler in the Code Blocks IDE.
     \subsection{Generating Test Data and Running the Experiments}
 
 \section{Experimental Results}
@@ -233,7 +235,7 @@ backgroundcolor=\color{lbcolor},
         As the two algorithms perform the same operation, they are able to be quantitatively compared. In section 3, we have theoretically shown that the average computational complexity of the brute force and selection algorithms are $\Theta{n^2}$ and $\Theta{n}$ respectively. In section 5, we have shown that these theoretical models fit the data that was collected quite well TODO r\^2?? - which allows us to confidently compare the two algorithms. It is clear that the selection algorithm is superiour to the brute force method for an arbitrarily sized array - shown computationality and analytically.
 
 \section{Appendix}
-    \subsection{1 - Source Code}
+    \subsection{Source Code}
         \subsubsection{Unit Tests}
             \lstinputlisting{CAB301_Assignment2/tests.cpp}
 
@@ -243,6 +245,14 @@ backgroundcolor=\color{lbcolor},
         \subsubsection{Selection Median}
             \lstinputlisting{CAB301_Assignment2/selectionMedian.cpp}
 
-    \subsection{2 - Figures}
-
+    \subsection{Figures}
+        \subsubsection{Brute Force}
+            \includegraphics[scale=0.7]{Images/brute_algorithm_basic_operations.png}\\
+            \includegraphics[scale=0.7]{Images/brute_algorithm_time_taken.png}
+        \subsubsection{Selection}
+            \includegraphics[scale=0.7]{Images/selection_algorithm_basic_operations.png}\\
+            \includegraphics[scale=0.7]{Images/selection_algorithm_basic_operations.png}
+        \subsubsection{Comparison}
+            \includegraphics[scale=0.7]{Images/direct_comparison_basic_operations.png}\\
+            \includegraphics[scale=0.7]{Images/direct_comparison_time_taken.png}
 \end{document}
