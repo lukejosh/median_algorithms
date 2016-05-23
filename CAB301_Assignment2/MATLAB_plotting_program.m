@@ -27,6 +27,7 @@ title('Brute Force Algorithm - Basic Operations');
 xlabel('Input Size (n)');
 ylabel('Number of Basic Operations( C(n) )');
 legend('Actual','Expected', 'Location', 'NorthWest');
+ylim([0 5*10^5])
 hold off;
 
 % Plot the time taken
