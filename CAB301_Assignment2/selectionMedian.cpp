@@ -28,27 +28,26 @@ int select(int *a, int lower, int middle, int upper ,int *operations_counter){
         //*operations_counter =  *operations_counter + 1;
         if (pos > middle){
             return select(a, lower, middle , pos-1, operations_counter);
-        } else {
-            //*operations_counter =  *operations_counter + 1;
-            if (pos < middle){
-                return select(a, pos+1, middle , upper, operations_counter);
-            };
+        } else if (pos < middle){
+            return select(a, pos+1, middle , upper, operations_counter);
         };
     };
 }
 
-int partitionSort(int *a, int lower, int upper ,int *operations_counter){
+int partitionSort(int *a, int lower, int upper ,int *num_operations){
     int pivot_val = a[lower];
     int pivot_loc = lower;
+    int operations_counter = 0;
 
     for (int i = lower+1; i <= upper; i++){
-        *operations_counter =  *operations_counter + 1;
-        if (a[i] < pivot_val){
+        if (a[i] < pivot_val & (operations_counter++ | 1)){
             pivot_loc++;
             swapValues(&a[pivot_loc], &a[i]);
         }
     }
     swapValues(&a[lower], &a[pivot_loc]);
+
+    *num_operations = *num_operations + operations_counter;
     return pivot_loc;
 }
 

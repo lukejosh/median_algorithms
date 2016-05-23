@@ -5,17 +5,15 @@ int bruteForceMedian(int *a, int num_elements, float *time_taken, int *num_opera
 
     clock_t start = clock();
 
-    k = ceil(num_elements/2.0);
+    k = ceil((float)num_elements/2.0);
 
     for(int i = 0; i < num_elements; i++){
         num_smaller = 0;
         num_equal = 0;
         for(int j = 0; j < num_elements; j++){
-                operations_counter++;
-                if (a[j] < a[i]){
+                if (a[j] < a[i] & (operations_counter++ | 1)){
                     num_smaller++;
                 }else{
-                    //operations_counter++;
                     if(a[j] == a[i]){
                     num_equal++;
                     };

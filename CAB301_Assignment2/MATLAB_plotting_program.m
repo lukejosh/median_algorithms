@@ -8,8 +8,7 @@ brute_num_operations = result_array(:,3)';
 select_time_taken = result_array(:,4)';
 select_num_operations = result_array(:,5)';
 
-% brute_num_operations_expected = (3/8)*(input_size.^2);
-brute_num_operations_expected = (1*((input_size.^2) + (mod(input_size,2).*input_size)))/2;
+brute_num_operations_expected = (1/2)* ((input_size.^2) - 1);
 select_num_operations_expected = 6*(input_size.^1);
 
 line_style_1 = '.b-';
@@ -19,7 +18,8 @@ line_style_expected = 'r';
 %% Plot Brute Force Efficiency
 
 % plot the number of operations
-subplot(2,3,1);
+figure();
+% subplot(2,3,1);
 plot(input_size, brute_num_operations, line_style_1);
 hold on;
 plot(input_size, brute_num_operations_expected, line_style_expected);
@@ -30,7 +30,8 @@ legend('Actual','Expected', 'Location', 'NorthWest');
 hold off;
 
 % Plot the time taken
-subplot(2,3,4);
+figure();
+%subplot(2,3,4);
 [hAx,hLine1,hLine2] = plotyy(input_size, brute_num_operations, input_size, brute_time_taken);
 hold on;
 set(hLine1,'marker','.','linestyle','-','color','b');
@@ -45,7 +46,8 @@ hold off;
 %% Plot Slection Efficiency
 
 % plot the number of operations
-subplot(2,3,2);
+figure();
+%subplot(2,3,2);
 plot(input_size, select_num_operations, line_style_1);
 hold on;
 plot(input_size, select_num_operations_expected, line_style_expected);
@@ -56,7 +58,8 @@ legend('Actual','Expected', 'Location', 'NorthWest');
 hold off;
 
 % Plot the time taken
-subplot(2,3,5);
+figure();
+%subplot(2,3,5);
 [hAx,hLine1,hLine2] = plotyy(input_size, select_num_operations, input_size, select_time_taken);
 hold on;
 set(hLine1,'marker','.','linestyle','-','color','b');
@@ -71,7 +74,8 @@ hold off;
 %% Direct comparison
 
 % Plot the number of operations
-subplot(2,3,3);
+figure();
+%subplot(2,3,3);
 plot(input_size, brute_num_operations, line_style_1);
 hold on;
 plot(input_size, select_num_operations, line_style_2);
@@ -82,7 +86,8 @@ legend('Brute Force','Selection', 'Location', 'NorthWest');
 hold off;
 
 % Plot the number of operations
-subplot(2,3,6);
+figure();
+%subplot(2,3,6);
 plot(input_size, brute_time_taken, line_style_1);
 hold on;
 plot(input_size, select_time_taken, line_style_2);

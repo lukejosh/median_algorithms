@@ -42,7 +42,7 @@ int main()
     int *brute_operations = new int[num_datapoints];
     int *select_operations = new int[num_datapoints];
 
-
+    #pragma omp parallel for
     for (int i=0; i < num_datapoints; i++) { // for each test
             input_size[i] = MIN_INPUT_SIZE+(i*STEP_INPUT_SIZE);
 
@@ -94,7 +94,7 @@ int *createRandomArray(int num_elements){
     int *a = new int[num_elements];
 
     for ( int i = 0 ; i < num_elements ; i++) {
-        a[i] = rand() % 1000 + 1;
+        a[i] = rand() % 100000000 + 1;
     };
 
     return a;
