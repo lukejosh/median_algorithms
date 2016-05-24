@@ -15,6 +15,7 @@
 \usepackage{textcomp}
 \usepackage{graphicx}
 
+
 \graphicspath{{./Images/}}
 
 \definecolor{listinggray}{gray}{0.9}
@@ -108,7 +109,9 @@ backgroundcolor=\color{lbcolor},
             \end{algorithm}
 
     \subsection{Median Selection Algorithm}
-        The selection algorithm for finding the median value of the array derives much of its logic from the Quicksort algorithm. The selection algorithm uses a recursive method to determine the median of the array.  The recursive function first performs a partition on the array where all elements less than a pivot element (starting with element 0 as the first pivot) are swapped until the pivot element swapped into its correct position. All elements with an index lower than that of the pivot, now also have a value which is less than that of the pivot. If the new position of the pivot is the middle of the array then the value of the pivot is returned as it is the median of the array. This check is the base case of the recursive function.
+        The selection algorithm for finding the median value of the array derives much of its logic from the QuickSelect algorithm. QuickSelect implements a random selection of a pivot element, which is used to partially sort the array around that pivot - which it then recursively continues on the subarray containing the median. QuickSelect has been quoted to have an average running complexity of $\Theta{n}$ \cite{cormen} - which is a value we can expect to get for the median selection algorithm.
+
+        The selection algorithm uses a recursive method to determine the median of the array.  The recursive function first performs a partition on the array where all elements less than a pivot element (starting with element 0 as the first pivot) are swapped until the pivot element swapped into its correct position. All elements with an index lower than that of the pivot, now also have a value which is less than that of the pivot. If the new position of the pivot is the middle of the array then the value of the pivot is returned as it is the median of the array. This check is the base case of the recursive function.
         Otherwise, if the position of the pivot is less than or greater than that of the middle index then the recursive function is called again and then performs the partition on either the lower or upper partition of the array respectively. This is performed until the base case is met and the element in the middle of the array is returned.\\
         It should be noted that there is no guarantee that the whole array will be completely sorted by this process. However, all elements at a lower index than that of the pivot will have a value that is lower than that of the pivot element and all elements with an index greater than that of the pivot element will have values that are also greater than the value of the median.
         Furthermore, in contract to the brute force algorithm, when this algorithm is performed on an even array size, returns the value which is towards the lower section of the sorted array.
@@ -196,8 +199,7 @@ backgroundcolor=\color{lbcolor},
             \begin{align}
                 c_{average} = \frac{n^2 + (n\mod 2) \cdot n}{2}
             \end{align}
-            Which gives the algorithm an average case complexity of $\Theta(n^2)$.
-
+            Which gives the algorithm an average case complexity of $\Theta(n^2)$.\\
             The above caluculations are assuming the median value for the array only occurs once. In other cases, an array may take the form $[1, 2, 3, 3, 3, 4, 5]$, which will skew the results for the average number of comparisons. For example, an array $A = [1, 2, 4, 5, 3, 3, 3]$, the median value is 3, but 3 appears more than once. This means the algorithm will find the median at the 5th position, but it must check each value against 7 other values.
 
     \subsection{Selection Median}
@@ -205,7 +207,7 @@ backgroundcolor=\color{lbcolor},
             The operation that best defines the complexity and running time of the selection median algorithm is the comparison $A[j] < pivotval$ which is performed by the partition sort logic borrowed from the Quicksort algorithm. This comparison operation is performed more than any other operation in the algorithm - a minimum of $n - 1$ times if the median value is in the first position of the array, and a maximum of $(n - 1)^2$ times, if the median value is in it's correct position at the centre of the array.
 
         \subsubsection{Average Case Efficiency}
-            Some dickhead online quotes fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you.
+            The average case number of comparisons performed in the selection algorithm is considerably more complex than that of the brute force implementation. It has been stated that the selection algorithm is extremely similar to the QuickSort algorithm - and as such, a similar computational complexity is expected. Berman and Paul state that the number of comparisons to be expected for an array of size n is less than $4\cdot n$ \cite{kenneth2004}.
 
 \section{Methodology, Tools and Techniques}
     \subsection{Programming Environment}
@@ -232,7 +234,7 @@ backgroundcolor=\color{lbcolor},
         \subsubsection{Number of operations}
             The selection algorithm was calculated to perform [a number of operations that it doesn't actually perform], which clearly [cannot be seen because it's fucked].
         \subsubsection{Computation time}
-            An operating complexity of $\Theta{n}$ was expected for the median selection. Looking at the graphs of the data collected, it is clear that there is a linear trend of computation time and size of the array. There is a large amount of variance [FOR SOME REASON].
+            An operating complexity of $\Theta{n}$ was expected for the median selection. While the included graph of the data makes the linear trend clear - it is also apparent that the data is neither pretty nor smooth. This is due to the fact that the algorithm runs in a very short amount of time, and the number of averages was not high enough to accurately depict a trend for each array size. 
     \subsection{Comparison}
         As the two algorithms perform the same operation, they are able to be quantitatively compared. In section 3, we have theoretically shown that the average computational complexity of the brute force and selection algorithms are $\Theta{n^2}$ and $\Theta{n}$ respectively. In section 5, we have shown that these theoretical models fit the data that was collected quite well - which allows us to confidently compare the two algorithms.
 
@@ -264,4 +266,7 @@ backgroundcolor=\color{lbcolor},
         \subsubsection{Comparison}
             \includegraphics[scale=0.6]{Images/direct_comparison_basic_operations.png}\\
             \includegraphics[scale=0.6]{Images/direct_comparison_time_taken.png}
+
+\section{Bibliography}
+    \bibliography{bibliography}
 \end{document}
