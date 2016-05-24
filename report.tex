@@ -77,9 +77,9 @@ backgroundcolor=\color{lbcolor},
 
 \section{Description of the Algorithms}
     \subsection{Brute Force}
-        The brute force median algorithm works by manually checking each value of the array, and determining  if the elements’ position in a sorted array is in the median position of jk=2j. It does this by checking each element of the array against every other element of the array, and counting the number of elements that are less than the value, and the number of elements that are greater than the value.
+        The brute force median algorithm works by manually checking each value of the array and determining if the element's position in a sorted array is in the median position of $\frac{n}{2}$. It does this by checking each element of the array against every other element of the array, and counting the number of elements that are less than the value, and the number of elements that are greater than the value.
 
-        Recalling that the median value of a list of numbers is the element that occurs in center position (rounded up for the purpose of this algorithm), the algorithm tests if a value is the median value by testing if half the elements in the array are less than the value. This can be seen in the pseudocode included in the next section
+        Recalling that the median value of a list of numbers is the element that occurs in center position (rounded up for the purpose of this algorithm), the algorithm tests if a value is the median value by testing if half the elements in the array are less than the value. This can be seen in the pseudocode included in the next section.
 
         \subsubsection{The Algorithm}
             \begin{algorithm}[H]
@@ -108,24 +108,22 @@ backgroundcolor=\color{lbcolor},
             \end{algorithm}
 
     \subsection{Median Selection Algorithm}
-        The selection algorithm for finding the median value of the array derives much of it's logic from the Quicksort algorithm. The selection algorithm uses a recursive method to determine the median of the array. 
-        The recursive function first performs a partition on the array where all elements less than a pivot element are swapped until the pivot element swapped into its correct position. All elements with an index lower than that of the pivot, now also have a value which is less than that of the pivot. If the new position of the pivot is the middle of the array then the value of the pivot is returned as it is the median of the array. This check is the base case of the recursive function.
-        Otherwise, if the position of the pivot is less than or greater than that of the middle index then the recursive function is called again and then performs the partition on either the lower or upper partition of the array respectively. This is performed until the base case is met and the element in the middle of the array is returned.
-        It should be noted that there is no guarantee that the whole array will be completely sorted by this process. However, all elements at a lower index than that of the median will have a value that is lower than that of the median element and all elements with an index greater than that of the median element will have values that are also greater than the value of the median.
+        The selection algorithm for finding the median value of the array derives much of its logic from the Quicksort algorithm. The selection algorithm uses a recursive method to determine the median of the array.  The recursive function first performs a partition on the array where all elements less than a pivot element (starting with element 0 as the first pivot) are swapped until the pivot element swapped into its correct position. All elements with an index lower than that of the pivot, now also have a value which is less than that of the pivot. If the new position of the pivot is the middle of the array then the value of the pivot is returned as it is the median of the array. This check is the base case of the recursive function.
+        Otherwise, if the position of the pivot is less than or greater than that of the middle index then the recursive function is called again and then performs the partition on either the lower or upper partition of the array respectively. This is performed until the base case is met and the element in the middle of the array is returned.\\
+        It should be noted that there is no guarantee that the whole array will be completely sorted by this process. However, all elements at a lower index than that of the pivot will have a value that is lower than that of the pivot element and all elements with an index greater than that of the pivot element will have values that are also greater than the value of the median.
         Furthermore, in contract to the brute force algorithm, when this algorithm is performed on an even array size, returns the value which is towards the lower section of the sorted array.
-        An example of this process is as follows, on an array $A = [3 5 4 2 1]$:\\
+        An example of this process is as follows, on an array $A = [3, 5, 4, 2, 1]$:\\
 
-        \noindent$A = [3 5 4 2 1]$ 5 and 4 are both greater than 3, do nothing\\\\
-        $A = [3 2 4 5 1]$ $2 < 3$, swap 5 with 2\\\\
-        $A = [3 2 1 5 4]$ $1 < 3$, swap 4 with 1\\\\
-        $A = [1 2 3 5 4]$ Finally, swap 3 with 1\\
+        \noindent$A = [3, 5, 4, 2, 1] \rightarrow$  5 and 4 are both greater than 3, do nothing\\\\
+        $A = [3, 2, 4, 5, 1] \rightarrow$  $2 < 3$, swap 5 with 2\\\\
+        $A = [3, 2, 1, 5, 4] \rightarrow$  $1 < 3$, swap 4 with 1\\\\
+        $A = [1, 2, 3, 5, 4] \rightarrow$  Finally, swap 3 with 1\\
 
         If the first value happens to be the median value of the array, the algorithm stops. However, if the index returned is not the median index, there are two possibilites:
 
         \begin{enumerate}
             \item If the index is less than the median index, the same process as above is performed, ignoring the first element of the array.
             \item If the index is greater than the median index, the same process as above is performed, ignoring the last element of the array.
-
         \end{enumerate}
 
         This process continues until the value with an index equal to the median index is found.
@@ -204,7 +202,8 @@ backgroundcolor=\color{lbcolor},
 
     \subsection{Selection Median}
         \subsubsection{Choice of Basic Operations}
-            The operation that best defines the complexity and running time of the selection median algorithm is the comparison $A[j] < pivot_val$ which is performed by the partition sort logic borrowed from the Quicksort algorithm. This comparison operation is performed more than any other operation in the algorithm - a minimum of $n - 1$ times, and a maximum of $(n - 1)^2$ times.
+            The operation that best defines the complexity and running time of the selection median algorithm is the comparison $A[j] < pivotval$ which is performed by the partition sort logic borrowed from the Quicksort algorithm. This comparison operation is performed more than any other operation in the algorithm - a minimum of $n - 1$ times if the median value is in the first position of the array, and a maximum of $(n - 1)^2$ times, if the median value is in it's correct position at the centre of the array.
+
         \subsubsection{Average Case Efficiency}
             Some dickhead online quotes fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you fuck you.
 
@@ -233,19 +232,14 @@ backgroundcolor=\color{lbcolor},
         \subsubsection{Number of operations}
             The selection algorithm was calculated to perform [a number of operations that it doesn't actually perform], which clearly [cannot be seen because it's fucked].
         \subsubsection{Computation time}
-            Some time
-
-
+            An operating complexity of $\Theta{n}$ was expected for the median selection. Looking at the graphs of the data collected, it is clear that there is a linear trend of computation time and size of the array. There is a large amount of variance [FOR SOME REASON].
     \subsection{Comparison}
         As the two algorithms perform the same operation, they are able to be quantitatively compared. In section 3, we have theoretically shown that the average computational complexity of the brute force and selection algorithms are $\Theta{n^2}$ and $\Theta{n}$ respectively. In section 5, we have shown that these theoretical models fit the data that was collected quite well - which allows us to confidently compare the two algorithms.
 
-        It is clear that the selection algorithm is superiour to the brute force method for an arbitrarily sized array - shown computationality and [lol] analytically.
+        It is clear that the selection algorithm is superiour to the brute force method for an arbitrarily sized array - shown computationality and [lol] analytically. Included in the figures are graphs comparing the computation time and operation count for both algorithms, these allow us to see the drastic difference between these two (result wise) equivalent algorithms. It can be seen that the difference in linear and quadratic running time causes the brute force method to reduce the selection method to less than a percent of the graphs y axis.
 
 \section{Appendix}
     \subsection{Source Code}
-        \subsubsection{Unit Tests}
-            \lstinputlisting{CAB301_Assignment2/tests.cpp}
-
         \subsubsection{Brute Force Median}
             \lstinputlisting{CAB301_Assignment2/bruteForceMedian.cpp}
 
@@ -255,14 +249,19 @@ backgroundcolor=\color{lbcolor},
         \subsubsection{Main}
             \lstinputlisting{CAB301_Assignment2/main.cpp}
 
+        \subsubsection{Unit Tests}
+            \lstinputlisting{CAB301_Assignment2/tests.cpp}
+        \newpage
+
+
     \subsection{Figures}
         \subsubsection{Brute Force}
-            \includegraphics[scale=0.7]{Images/brute_algorithm_basic_operations.png}\\
-            \includegraphics[scale=0.7]{Images/brute_algorithm_time_taken.png}
+            \includegraphics[scale=0.6]{Images/brute_algorithm_basic_operations.png}\\
+            \includegraphics[scale=0.6]{Images/brute_algorithm_time_taken.png}
         \subsubsection{Selection}
-            \includegraphics[scale=0.7]{Images/selection_algorithm_basic_operations.png}\\
-            \includegraphics[scale=0.7]{Images/selection_algorithm_basic_operations.png}
+            \includegraphics[scale=0.6]{Images/selection_algorithm_basic_operations.png}\\
+            \includegraphics[scale=0.6]{Images/selection_algorithm_time_taken.png}
         \subsubsection{Comparison}
-            \includegraphics[scale=0.7]{Images/direct_comparison_basic_operations.png}\\
-            \includegraphics[scale=0.7]{Images/direct_comparison_time_taken.png}
+            \includegraphics[scale=0.6]{Images/direct_comparison_basic_operations.png}\\
+            \includegraphics[scale=0.6]{Images/direct_comparison_time_taken.png}
 \end{document}
