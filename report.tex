@@ -232,14 +232,14 @@ backgroundcolor=\color{lbcolor},
             The computation for the brute force algorithm was expected to run in $\Theta{n^2}$ time. In other words, the time for the algorithm to run is determined quadratically by the number of elements in the array. It can be seen in the included figure that the collected data follows a quadratic trend. Included on this graph also is the operation count again, which allows us to see that the average case running time is indeed correllated to the number of basic operations performed.
     \subsection{Selection}
         \subsubsection{Number of operations}
-            The selection algorithm was calculated to perform [a number of operations that it doesn't actually perform], which clearly [cannot be seen because it's fucked].
+            The selection algorithm was quoted to perform less than $4 \cdot n$ comparisons to determine the median value of array of size n on average. For comparison, the line $comparisons = 4 \cdot array_size$ has been graphed. It is clear that the recorded data fits the expected trend - as it almost always lies below the line. As the number of samples or averages is increased, the variance would become less, and the recorded data would trend closer and closer to a straight line which lies underneath the plotted function.
         \subsubsection{Computation time}
             An operating complexity of $\Theta{n}$ was expected for the median selection. While the included graph of the data makes the linear trend clear - it is also apparent that the data is neither pretty nor smooth. This is due to the fact that the algorithm runs in a very short amount of time, and the number of averages was not high enough to accurately depict a trend for each array size. 
     \subsection{Comparison}
         As the two algorithms perform the same operation, they are able to be quantitatively compared. In section 3, we have theoretically shown that the average computational complexity of the brute force and selection algorithms are $\Theta{n^2}$ and $\Theta{n}$ respectively. In section 5, we have shown that these theoretical models fit the data that was collected quite well - which allows us to confidently compare the two algorithms.
 
         It is clear that the selection algorithm is superiour to the brute force method for an arbitrarily sized array - shown computationality and [lol] analytically. Included in the figures are graphs comparing the computation time and operation count for both algorithms, these allow us to see the drastic difference between these two (result wise) equivalent algorithms. It can be seen that the difference in linear and quadratic running time causes the brute force method to reduce the selection method to less than a percent of the graphs y axis.
-
+\newpage
 \section{Appendix}
     \subsection{Source Code}
         \subsubsection{Brute Force Median}
