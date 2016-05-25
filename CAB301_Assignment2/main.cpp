@@ -12,6 +12,8 @@
 #define STEP_INPUT_SIZE 3
 #define NUM_AVERAGES 2000
 
+#define SELECTION_AVERAGES 10
+
 #define MS_PER_SEC 1000
 
 using namespace std;
@@ -21,6 +23,9 @@ int *createRandomArray(int num_elements);
 
 // writes the results to a csv file
 int writeResultsToFile(int num_elements, int *input_size, float *brute_time, int *brute_operations, float *select_time, int *select_operations);
+
+// Makes a copy of an array
+int *copy_array(int num_elements, int *old_array);
 
 int main()
 {
@@ -42,7 +47,9 @@ int main()
     int *brute_operations = new int[num_datapoints];
     int *select_operations = new int[num_datapoints];
 
-    #pragma omp parallel for
+    int selection_total_operations;
+    float selection_total_time;
+
     for (int i=0; i < num_datapoints; i++) { // for each test
             input_size[i] = MIN_INPUT_SIZE+(i*STEP_INPUT_SIZE);
 
@@ -57,16 +64,22 @@ int main()
             int *a = createRandomArray(input_size[i]);
 
             bruteForceMedian(a, input_size[i], &brute_time[i], &brute_operations[i] );
-            selectionMedian(a, input_size[i], &select_time[i], &select_operations[i] );
+
+            for (int counter = 0; counter < SELECTION_AVERAGES; counter++ ){ //average selection a higher number of times
+                selectionMedian(copy_array(input_size[i], a), input_size[i], &select_time[i], &select_operations[i] );
+            }
+
+            select_time[i] = select_time[i] / SELECTION_AVERAGES;
+            select_operations[i] = select_operations[i] / SELECTION_AVERAGES;
 
             delete[] a;
         };
 
         brute_time[i] = (brute_time[i]*(float)MS_PER_SEC)/((float)NUM_AVERAGES*(float)CLOCKS_PER_SEC);
-        select_time[i] = (select_time[i]*(float)MS_PER_SEC)/((float)NUM_AVERAGES*(float)CLOCKS_PER_SEC);
+        select_time[i] = (select_time[i]*(float)MS_PER_SEC)/((float)NUM_AVERAGES*(float)SELECTION_AVERAGES*(float)CLOCKS_PER_SEC);
 
         brute_operations[i] = (int)brute_operations[i]/NUM_AVERAGES;
-        select_operations[i] = (int)select_operations[i]/NUM_AVERAGES;
+        select_operations[i] = (int)select_operations[i]/(NUM_AVERAGES * SELECTION_AVERAGES);
 
         cout << "   Brute Force Algorithm" << endl;
         cout << "       Time Taken(ms) = " << brute_time[i] << endl;
@@ -94,21 +107,31 @@ int *createRandomArray(int num_elements){
     int *a = new int[num_elements];
 
     for ( int i = 0 ; i < num_elements ; i++) {
-        a[i] = rand() % 100000000 + 1;
+        a[i] = (rand() % (num_elements * 10)) + 1;
     };
 
     return a;
 }
 
+int *copy_array(int num_elements, int *old_array){
+    int new_array[num_elements];
+
+    for (int i = 0; i < num_elements; i++){
+        new_array[i] = old_array[i];
+    }
+
+    return new_array;
+}
+
 int writeResultsToFile(int num_elements, int *input_size, float *brute_time, int *brute_operations, float *select_time, int *select_operations){
 
-    ofstream myfile ("results.csv");
+    ofstream myfile ("/home/luke/repos/uni/cab301/results_new.csv");
     if (myfile.is_open())
     {
-        myfile << "input size" << "," << "brute force - time taken" << "," << "brute force - number operations";
+        myfile << "input size";
         myfile << "," << "select - time taken" << "," << "select - number operations" << endl;
         for ( int i = 0 ; i < num_elements ; i++) {
-            myfile << input_size[i] << "," << brute_time[i] << "," << brute_operations[i];
+            myfile << input_size[i];
             myfile << "," << select_time[i] << "," << select_operations[i]<< endl;
         };
         myfile.close();

@@ -1,4 +1,11 @@
+#include <iostream>
+#include <fstream>
+#include <ctime>
+#include <cstdio>
+#include <stdlib.h>
+#include "bruteForceMedian.h"
 #include "selectionMedian.h"
+#include "tests.h"
 
 int selectionMedian(int *a, int num_elements, float *time_taken, int *num_operations){
     int answer, operations_counter = 0;
@@ -21,11 +28,10 @@ int select(int *a, int lower, int middle, int upper ,int *operations_counter){
 
     int pos = partitionSort(a,lower,upper,operations_counter);
 
-    //*operations_counter =  *operations_counter + 1;
     if (pos == middle){
         return a[pos];
     }else{
-        //*operations_counter =  *operations_counter + 1;
+
         if (pos > middle){
             return select(a, lower, middle , pos-1, operations_counter);
         } else if (pos < middle){
