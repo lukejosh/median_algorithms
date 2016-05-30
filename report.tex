@@ -106,7 +106,9 @@ backgroundcolor=\color{lbcolor},
 
 \bibliographystyle{apacite}
 \maketitle
-\includegraphics[scale=0.7]{Images/direct_comparison_basic_operations.png}\\
+\begin{center}
+\includegraphics[scale=0.5]{Images/direct_comparison_basic_operations.png}\\
+\end{center}
 \begin{bottompar}
 We declare that we have both contributed equally to this piece of assesment.\\\\\\\\
 \noindent\begin{tabular}{ll}
@@ -274,20 +276,47 @@ Luke Josh & Date\\
     All graphs referenced in this section have been included in section 1 of the appendix.
     \subsection{Functional Testing}
         To ensure the functional correctness of the implemented algorithms - a number of unit tests have been implemented. These tests are included the the test.cpp file, which is also included in appendix 1. These unit tests ensure that the algorithms produce the expected results for a number of predefined test cases. The output of the test cases for the configuration of the algorithms is as follows:\\\\
-        Would you like to run the tests? (0 = No, 1 = Yes)\\
+        Would you like to run the tests? (0 = No, 1 = Yes)
         1\\
         Test 1\\
-           \tab Array = [ 1 2 3 4 5 ]\\
-               \tab \tab Brute Force Algorithm\\
-                   \tab \tab \tab Num Operations = 15\\
-                   \tab \tab \tab Answer = 3\\
-                   \tab \tab \tab Expected = 3\\
-                   \tab \tab \tab Passed = 1\\
-               \tab \tab Selection Algorithm\\
-                   \tab \tab \tab Num Operations = 9\\
-                   \tab \tab \tab Answer = 3\\
-                   \tab \tab \tab Expected = 3\\
-                   \tab \tab \tab Passed = 1\\\\
+        \tab Array = [ 1 2 3 4 5 ]\\
+        \tab \tab Brute Force Algorithm\\
+        \tab \tab \tab Num Operations = 15\\
+        \tab \tab \tab Answer = 3\\
+        \tab \tab \tab Expected = 3\\
+        \tab \tab \tab Passed = 1\\
+        \tab \tab Selection Algorithm\\
+        \tab \tab \tab Num Operations = 9\\
+        \tab \tab \tab Answer = 3\\
+        \tab \tab \tab Expected = 3\\
+        \tab \tab \tab Passed = 1\\
+        \tab Passed = 1\\
+        Test 2\\
+        \tab Array = [ 1 2 3 4 5 6 ]\\
+        \tab \tab Brute Force Algorithm\\
+        \tab \tab \tab Num Operations = 18\\
+        \tab \tab \tab Answer = 3\\
+        \tab \tab \tab Expected = 3\\
+        \tab \tab \tab Passed = 1\\
+        \tab \tab Selection Algorithm\\
+        \tab \tab \tab Num Operations = 14\\
+        \tab \tab \tab Answer = 4\\
+        \tab \tab \tab Expected = 4\\
+        \tab \tab \tab Passed = 1\\
+        \tab Passed = 1\\
+        Test 3\\
+        \tab Array = [ 1 2 3 3 5 ]\\
+        \tab \tab Brute Force Algorithm\\
+        \tab \tab \tab Num Operations = 15\\
+        \tab \tab \tab Answer = 3\\
+        \tab \tab \tab Expected = 3\\
+        \tab \tab \tab Passed = 1\\
+        \tab \tab \tab Selection Algorithm\\
+        \tab \tab \tab Num Operations = 9\\
+        \tab \tab \tab Answer = 3\\
+        \tab \tab \tab Expected = 3\\
+        \tab \tab \tab Passed = 1\\
+        \tab Passed = 1\\
         Which shows that the algorithms are functionally correct, and do return the median value of the test arrays.
     \subsection{Brute Force}
         \subsubsection{Number of operations}
@@ -323,7 +352,7 @@ Luke Josh & Date\\
         \subsubsection{Comparison}
             \includegraphics[scale=0.6]{Images/direct_comparison_basic_operations.png}\\
             \includegraphics[scale=0.6]{Images/direct_comparison_time_taken.png}
-
+    \newpage
     \subsection{Source Code}
         \subsubsection{Brute Force Median}
             \lstinputlisting[language=C++]{CAB301_Assignment2/bruteForceMedian.cpp}
